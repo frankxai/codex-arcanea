@@ -45,7 +45,12 @@ export function getAssistantConfig(guardian: string): AssistantConfig | undefine
 }
 
 export async function createAssistant(config: AssistantConfig): Promise<string> {
-  // Placeholder for actual OpenAI Assistants API implementation
+  if (!config.name || !config.guardian) {
+    throw new Error('Assistant name and guardian are required');
+  }
+
+  // TODO: Implement actual OpenAI Assistants API integration
+  // This is a placeholder implementation
   console.log(`Creating assistant: ${config.name} (${config.guardian})`);
   return `assistant_${config.guardian.toLowerCase()}`;
 }
