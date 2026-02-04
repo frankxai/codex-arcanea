@@ -35,7 +35,15 @@
     "deploy:gpt": "node scripts/deploy-gpt.js",
     "prepublishOnly": "npm run build"
   },
-  "keywords": ["arcanea", "openai", "codex", "gpt", "chatgpt", "ai", "guardians"],
+  "keywords": [
+    "arcanea",
+    "openai",
+    "codex",
+    "gpt",
+    "chatgpt",
+    "ai",
+    "guardians"
+  ],
   "author": "FrankX <frank@frankx.ai>",
   "license": "MIT",
   "repository": {
@@ -47,7 +55,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.14.12",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/eslint-plugin": "^8.54.0",
     "@typescript-eslint/parser": "^6.15.0",
     "eslint": "^8.55.0",
     "prettier": "^3.1.1",
