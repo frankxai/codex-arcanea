@@ -1,0 +1,45 @@
+$schema: https://arcanea.ai/schema/overlay-manifest/v1.json
+
+name: codex-arcanea
+version: 0.1.0
+description: |
+  Arcanea overlay for OpenAI Codex CLI. Teaches the codex CLI about
+  Arcanea canon, voice, and Arcanea-specific review/debug workflows.
+  BYOK (OPENAI_API_KEY) — use for second-opinion review and reasoning-heavy
+  tasks where GPT-5 complements Claude Opus.
+
+surface: codex-arcanea
+
+runtime:
+  binary: codex
+  minVersion: 0.20.0
+  configDir: ~/.codex
+
+install:
+  - step: copy
+    from: ./prompts
+    to: "{configDir}/prompts"
+    merge: true
+  - step: copy
+    from: ./config.toml
+    to: "{configDir}/config.toml"
+    merge: true
+
+routerSpec:
+  source: "@arcanea/router-spec"
+  reads:
+    - models
+    - tasks
+    - surfaces.codex-arcanea
+
+dependencies:
+  "@arcanea/router-spec": ">=1.0.0"
+
+agents:
+  definitions: ./prompts
+  agentsMd: ./AGENTS.md
+
+preview:
+  commands:
+    - cmd: "codex exec 'second-opinion review of this diff'"
+      description: "router-spec routes code.review to gpt-5 via codex-arcanea"
